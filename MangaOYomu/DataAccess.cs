@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -693,8 +694,18 @@ namespace MangaOYomu
             List<Genres> genres = GetGenres();
             var genre = genres.FirstOrDefault(t => t.GenresID == id);
 
+            DBConnection.connection.Entry(genre).State = EntityState.Deleted;
             DBConnection.connection.Genres.Remove(genre);
+            
             DBConnection.connection.SaveChanges();
+            
+            //localDb.Configuration.ValidateOnSaveEnabled = false;
+            //
+            //var customer = new Customer { CustomerId = id };
+            //
+            //localDb.Customers.Attach(customer);
+            //localDb.Entry(customer).State = EntityState.Deleted;
+            //localDb.SaveChanges();
         }
 
         //////////////////////////////////////////////////////////
