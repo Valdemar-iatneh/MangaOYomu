@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuWeb", "MangaOYomu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuConsole", "MangaOYomuConsole\MangaOYomuConsole.csproj", "{03F9797E-3496-4BEB-8C75-F6022DA4B78A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuApi", "MangaOYomuApi\MangaOYomuApi.csproj", "{EEBE88AC-4C35-49F0-867D-B84B6B17247E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{03F9797E-3496-4BEB-8C75-F6022DA4B78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03F9797E-3496-4BEB-8C75-F6022DA4B78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03F9797E-3496-4BEB-8C75-F6022DA4B78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEBE88AC-4C35-49F0-867D-B84B6B17247E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBE88AC-4C35-49F0-867D-B84B6B17247E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBE88AC-4C35-49F0-867D-B84B6B17247E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBE88AC-4C35-49F0-867D-B84B6B17247E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
