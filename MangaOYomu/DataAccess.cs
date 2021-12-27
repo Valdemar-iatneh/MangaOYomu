@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MangaOYomu
 {
-    class DataAccess
+    public class DataAccess
     {
         public static List<MangaTitle> GetMangaTitles()
         {
