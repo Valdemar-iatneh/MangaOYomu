@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomu", "MangaOYomu\MangaOYomu.csproj", "{2FDD8C7E-02DF-490A-A666-DDE51E09DE3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuCore", "MangaOYomu\MangaOYomuCore.csproj", "{2FDD8C7E-02DF-490A-A666-DDE51E09DE3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuWeb", "MangaOYomuWeb\MangaOYomuWeb.csproj", "{FCE5B8B6-2BF1-494F-9EB7-7D65FB296EEB}"
 EndProject
