@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c8ff35bbc8a945538a4600b2b62ce3fb" Name="Diagram1">
+        <EntityTypeShape EntityType="MangaDBModel.AgeStatus" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.Artist" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.Author" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.Chapters" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.Genres" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.MangaTitle" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.MangaTitleGenres" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.MangaType" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.Pages" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.Publisher" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MangaDBModel.TitleStatus" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <AssociationConnector Association="MangaDBModel.FK_MangaTitle_AgeStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_MangaTitle_Artist" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_MangaTitle_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_Chapters_MangaTitle" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_Pages_Chapters" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_MangaTitleGenres_Genres" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_MangaTitle_MangaType" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_MangaTitle_Publisher" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_MangaTitle_TitleStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MangaDBModel.FK_MangaTitleGenres_MangaTitle" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
