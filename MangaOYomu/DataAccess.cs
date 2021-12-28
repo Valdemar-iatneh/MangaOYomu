@@ -99,10 +99,14 @@ namespace MangaOYomu
 
         public static void DeleteMangaTitle(int id)
         {
-            List<MangaTitle> mangaTitles = GetMangaTitles();
-            var mangaTitle = mangaTitles.FirstOrDefault(t => t.MangaTitleID == id);
+            //List<MangaTitle> mangaTitles = GetMangaTitles();
+            //var mangaTitle = mangaTitles.FirstOrDefault(t => t.MangaTitleID == id);
+            //
+            //DBConnection.connection.MangaTitle.Remove(mangaTitle);
+            //DBConnection.connection.SaveChanges();
 
-            DBConnection.connection.MangaTitle.Remove(mangaTitle);
+            MangaTitle delet = DBConnection.connection.MangaTitle.FirstOrDefault<MangaTitle>(p => p.MangaTitleID == id);
+            DBConnection.connection.MangaTitle.Remove(delet);
             DBConnection.connection.SaveChanges();
         }
 
@@ -184,10 +188,14 @@ namespace MangaOYomu
 
         public static void DeleteAuthor(int id)
         {
-            List<Author> authors = GetAuthors();
-            var author = authors.FirstOrDefault(t => t.AuthorID == id);
+            //List<Author> authors = GetAuthors();
+            //var author = authors.FirstOrDefault(t => t.AuthorID == id);
+            //
+            //DBConnection.connection.Author.Remove(author);
+            //DBConnection.connection.SaveChanges();
 
-            DBConnection.connection.Author.Remove(author);
+            Author delet = DBConnection.connection.Author.FirstOrDefault<Author>(p => p.AuthorID == id);
+            DBConnection.connection.Author.Remove(delet);
             DBConnection.connection.SaveChanges();
         }
 
@@ -302,10 +310,14 @@ namespace MangaOYomu
 
         public static void DeleteArtist(int id)
         {
-            List<Artist> artists = GetArtists();
-            var artist = artists.FirstOrDefault(t => t.ArtistID == id);
+            //List<Artist> artists = GetArtists();
+            //var artist = artists.FirstOrDefault(t => t.ArtistID == id);
+            //
+            //DBConnection.connection.Artist.Remove(artist);
+            //DBConnection.connection.SaveChanges();
 
-            DBConnection.connection.Artist.Remove(artist);
+            Artist delet = DBConnection.connection.Artist.FirstOrDefault<Artist>(p => p.ArtistID == id);
+            DBConnection.connection.Artist.Remove(delet);
             DBConnection.connection.SaveChanges();
         }
 
@@ -385,10 +397,14 @@ namespace MangaOYomu
 
         public static void DeletePublisher(int id)
         {
-            List<Publisher> publishers = GetPublishers();
-            var publisher = publishers.FirstOrDefault(t => t.PublisherID == id);
+            //List<Publisher> publishers = GetPublishers();
+            //var publisher = publishers.FirstOrDefault(t => t.PublisherID == id);
+            //
+            //DBConnection.connection.Publisher.Remove(publisher);
+            //DBConnection.connection.SaveChanges();
 
-            DBConnection.connection.Publisher.Remove(publisher);
+            Publisher delet = DBConnection.connection.Publisher.FirstOrDefault<Publisher>(p => p.PublisherID == id);
+            DBConnection.connection.Publisher.Remove(delet);
             DBConnection.connection.SaveChanges();
         }
 
@@ -533,6 +549,10 @@ namespace MangaOYomu
 
             DBConnection.connection.Chapters.Remove(chapter);
             DBConnection.connection.SaveChanges();
+
+            Publisher delet = DBConnection.connection.Publisher.FirstOrDefault<Publisher>(p => p.PublisherID == id);
+            DBConnection.connection.Publisher.Remove(delet);
+            DBConnection.connection.SaveChanges();
         }
 
         //////////////////////////////////////////////////////////
@@ -607,10 +627,14 @@ namespace MangaOYomu
 
         public static void DeletePage(int id)
         {
-            List<Pages> pages = GetPages();
-            var page = pages.FirstOrDefault(t => t.PagesID == id);
+            //List<Pages> pages = GetPages();
+            //var page = pages.FirstOrDefault(t => t.PagesID == id);
+            //
+            //DBConnection.connection.Pages.Remove(page);
+            //DBConnection.connection.SaveChanges();
 
-            DBConnection.connection.Pages.Remove(page);
+            Pages delet = DBConnection.connection.Pages.FirstOrDefault<Pages>(p => p.PagesID == id);
+            DBConnection.connection.Pages.Remove(delet);
             DBConnection.connection.SaveChanges();
         }
 
@@ -691,21 +715,16 @@ namespace MangaOYomu
 
         public static void DeleteGenre(int id)
         {
-            List<Genres> genres = GetGenres();
-            var genre = genres.FirstOrDefault(t => t.GenresID == id);
+            //List<Genres> genres = GetGenres();
+            //var genre = genres.FirstOrDefault(t => t.GenresID == id);
+            //
+            //DBConnection.connection.Entry(genre).State = EntityState.Deleted;
+            //DBConnection.connection.Genres.Remove(genre);           
+            //DBConnection.connection.SaveChanges();
 
-            DBConnection.connection.Entry(genre).State = EntityState.Deleted;
-            DBConnection.connection.Genres.Remove(genre);
-            
+            Genres delet = DBConnection.connection.Genres.FirstOrDefault<Genres>(p => p.GenresID == id);
+            DBConnection.connection.Genres.Remove(delet);
             DBConnection.connection.SaveChanges();
-            
-            //localDb.Configuration.ValidateOnSaveEnabled = false;
-            //
-            //var customer = new Customer { CustomerId = id };
-            //
-            //localDb.Customers.Attach(customer);
-            //localDb.Entry(customer).State = EntityState.Deleted;
-            //localDb.SaveChanges();
         }
 
         //////////////////////////////////////////////////////////
@@ -780,10 +799,14 @@ namespace MangaOYomu
 
         public static void DeleteMangaTitleGenres(int id)
         {
-            List<MangaTitleGenres> mangaTitleGenres = GetMangaTitleGenres();
-            var mangaTitleGenre = mangaTitleGenres.FirstOrDefault(t => t.MangaTitleGenresID == id);
+            //List<MangaTitleGenres> mangaTitleGenres = GetMangaTitleGenres();
+            //var mangaTitleGenre = mangaTitleGenres.FirstOrDefault(t => t.MangaTitleGenresID == id);
+            //
+            //DBConnection.connection.MangaTitleGenres.Remove(mangaTitleGenre);
+            //DBConnection.connection.SaveChanges();
 
-            DBConnection.connection.MangaTitleGenres.Remove(mangaTitleGenre);
+            MangaTitleGenres delet = DBConnection.connection.MangaTitleGenres.FirstOrDefault<MangaTitleGenres>(p => p.MangaTitleGenresID == id);
+            DBConnection.connection.MangaTitleGenres.Remove(delet);
             DBConnection.connection.SaveChanges();
         }
     }

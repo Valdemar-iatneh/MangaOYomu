@@ -33,5 +33,16 @@ namespace MangaOYomuApi.Controllers
             DataAccess.AddNewMangaTitle(mangaTitle);
             return NoContent();
         }
+
+        [HttpDelete("{MangaTitleID}")]
+        public IActionResult Delete(int mangaTitleID)
+        {
+            var result = DataAccess.GetMangaTitle(mangaTitleID);
+            if (result == null)
+                return NotFound();
+
+            DataAccess.DeleteMangaTitle(mangaTitleID);
+            return NoContent();
+        }
     }
 }
