@@ -1,31 +1,32 @@
 ﻿@using MangaOYomu
-//@model List<>
+@model List<MangaTitle>
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    @foreach (var project in Model)
+<div class="row">
+    @foreach (var manga in Model)
     {
         <div class="col-md-4 mb-5">
             <div class="card h-100">
                 <div class="card-body">
                     <div>
-                        <img class="card-img-top" src="~/images/project_icon.png"
-                             alt="@project.Name" />
+                        <img class="card-img-top" src=@manga.Cover
+                             alt="No Image" />
                     </div>
-                    <h1>@project.Name</h1>
-                    <h2 class="card-title text-center">
-                        <a href="@project.Link" target=_blank>@project.Link</a>
+                    <h1 class="card-title text-center">@manga.Name</h1>
+
+                    <h2 class="card-title text-center" style="color: blue">
+                        @manga.Rating ☆
                     </h2>
                     <div>
-                        <p class="font-weight-normal">@project.Description</p>
+                        <p class="font-weight-normal">@manga.ReleaseYear</p>
                     </div>
                     <div class="text-center">
                         <a class="btn btn-danger" asp-controller="Projects"
-                           asp-action="Delete" asp-route-name="@project.Name"
+                           asp-action="MoreDetails" asp-route-name="@manga.Name"
                            role="button">
-                            Remove
+                            Подробнее
                         </a>
                     </div>
                 </div>

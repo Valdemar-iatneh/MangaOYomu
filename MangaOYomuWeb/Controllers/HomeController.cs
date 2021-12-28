@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using MangaOYomu;
 
 namespace MangaOYomuWeb.Controllers
 {
@@ -20,7 +21,7 @@ namespace MangaOYomuWeb.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(DataAccess.GetMangaTitles());
         }
 
         public IActionResult Privacy()
