@@ -1,8 +1,35 @@
-﻿@{
+﻿@using MangaOYomu
+//@model List<>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @foreach (var project in Model)
+    {
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div>
+                        <img class="card-img-top" src="~/images/project_icon.png"
+                             alt="@project.Name" />
+                    </div>
+                    <h1>@project.Name</h1>
+                    <h2 class="card-title text-center">
+                        <a href="@project.Link" target=_blank>@project.Link</a>
+                    </h2>
+                    <div>
+                        <p class="font-weight-normal">@project.Description</p>
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-danger" asp-controller="Projects"
+                           asp-action="Delete" asp-route-name="@project.Name"
+                           role="button">
+                            Remove
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
