@@ -4,6 +4,8 @@
     ViewData["Title"] = "Home Page";
 }
 
+<!-- Хорошее применение методов из ядра -->
+
 <div class="row">
     @foreach (var manga in Model)
     {
@@ -12,7 +14,8 @@
                 <div class="card-body">
                     <div>
                         <img class="card-img-top" src=@manga.Cover
-                             alt="No Image  "/>
+                             alt="No Image  " />
+                        <!-- названия картинок не соотвствует требованиям code convention-->
                     </div>
                     <h1 class="card-title text-center">@manga.Name</h1>
 

@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//удалить ненужные using 
 
 namespace MangaOYomu
 {
@@ -93,6 +94,7 @@ namespace MangaOYomu
 
         public static void DeleteMangaTitle(MangaTitle mangaTitle)
         {
+            //метод не выполняет свою функцию
             DBConnection.connection.MangaTitle.Remove(mangaTitle);
             DBConnection.connection.SaveChanges();
         }
@@ -799,6 +801,8 @@ namespace MangaOYomu
 
         public static void DeleteMangaTitleGenres(int id)
         {
+
+
             //List<MangaTitleGenres> mangaTitleGenres = GetMangaTitleGenres();
             //var mangaTitleGenre = mangaTitleGenres.FirstOrDefault(t => t.MangaTitleGenresID == id);
             //

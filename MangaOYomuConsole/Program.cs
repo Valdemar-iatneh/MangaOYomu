@@ -7,13 +7,13 @@ namespace MangaOYomuConsole
     {
         static void Main()
         {
-
+            //вызывается несуществующий метод
             //DeleteFlight(1);
-            //while (true)
-            //{
-            //    var command = Console.ReadLine();
-            //    Execute(command);
-            //}
+            while (true)
+            {
+                var command = Console.ReadLine();
+                Execute(command);
+            }
         }
 
         private static void Execute(string command)
@@ -40,7 +40,9 @@ namespace MangaOYomuConsole
 
         private static void Add(string command)
         {
+            //некорректно обьявлена переменная temp, объявить переменные и поместить в них элементы массива 
             string[] temp = Console.ReadLine().Trim().Split(' ');
+            //переменная не соответствует code convention
             bool t = false;
             switch (command)
             {
@@ -67,6 +69,7 @@ namespace MangaOYomuConsole
 
             Output(t);
         }
+        //хорошее решение
         private static void Get(string command)
         {
             switch (command)

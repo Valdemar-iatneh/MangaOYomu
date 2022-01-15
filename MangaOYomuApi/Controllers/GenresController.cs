@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+//удалить ненужные using 
 
 namespace MangaOYomuApi.Controllers
 {
@@ -45,7 +46,7 @@ namespace MangaOYomuApi.Controllers
 
             return NoContent();
         }
-
+        //не работает
         [HttpDelete("{GenresID}")]
         public IActionResult Delete(int genresID)
         {
