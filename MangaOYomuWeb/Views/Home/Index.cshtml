@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div>
                         <img class="card-img-top" src=@manga.Cover
-                             alt="No Image" />
+                             alt="No Image  "/>
                     </div>
                     <h1 class="card-title text-center">@manga.Name</h1>
 
@@ -24,7 +24,7 @@
                     </div>
                     <div class="text-center">
                         <a class="btn btn-danger" asp-controller="Projects"
-                           asp-action="MoreDetails" asp-route-name="@manga.Name"
+                           asp-action="MangaAbout" asp-route-name="@manga.MangaTitleID"
                            role="button">
                             Подробнее
                         </a>
