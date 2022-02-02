@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuCore", "MangaOYomu\MangaOYomuCore.csproj", "{2FDD8C7E-02DF-490A-A666-DDE51E09DE3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuWeb", "MangaOYomuWeb\MangaOYomuWeb.csproj", "{FCE5B8B6-2BF1-494F-9EB7-7D65FB296EEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaOYomuWeb", "MangaOYomuWeb\MangaOYomuWeb.csproj", "{FCE5B8B6-2BF1-494F-9EB7-7D65FB296EEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuConsole", "MangaOYomuConsole\MangaOYomuConsole.csproj", "{03F9797E-3496-4BEB-8C75-F6022DA4B78A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaOYomuConsole", "MangaOYomuConsole\MangaOYomuConsole.csproj", "{03F9797E-3496-4BEB-8C75-F6022DA4B78A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangaOYomuApi", "MangaOYomuApi\MangaOYomuApi.csproj", "{EEBE88AC-4C35-49F0-867D-B84B6B17247E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangaOYomuApi", "MangaOYomuApi\MangaOYomuApi.csproj", "{EEBE88AC-4C35-49F0-867D-B84B6B17247E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{A9E70E80-A717-4586-B138-37257DD9CE80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{EEBE88AC-4C35-49F0-867D-B84B6B17247E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEBE88AC-4C35-49F0-867D-B84B6B17247E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEBE88AC-4C35-49F0-867D-B84B6B17247E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9E70E80-A717-4586-B138-37257DD9CE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9E70E80-A717-4586-B138-37257DD9CE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9E70E80-A717-4586-B138-37257DD9CE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9E70E80-A717-4586-B138-37257DD9CE80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
