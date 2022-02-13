@@ -8,6 +8,6 @@ namespace MangaOYomu
 {
     class DBConnection
     {
-        public static MangaDBEntities connection = new MangaDBEntities();
+        public static MangaOYomuDBEntities connection = new MangaOYomuDBEntities();
     }
 }

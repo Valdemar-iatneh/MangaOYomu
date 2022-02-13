@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MangaOYomuDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgeStatus">
+          <Key>
+            <PropertyRef Name="AgeStatusID" />
+          </Key>
+          <Property Name="AgeStatusID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="AuthorID" />
+          </Key>
+          <Property Name="AuthorID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Chapters">
+          <Key>
+            <PropertyRef Name="ChaptersID" />
+          </Key>
+          <Property Name="ChaptersID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="MangaTitleID" Type="int" />
+        </EntityType>
+        <EntityType Name="Genres">
+          <Key>
+            <PropertyRef Name="GenresID" />
+          </Key>
+          <Property Name="GenresID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="MangaTitle">
+          <Key>
+            <PropertyRef Name="MangaTitleID" />
+          </Key>
+          <Property Name="MangaTitleID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="700" />
+          <Property Name="ReleaseYear" Type="int" />
+          <Property Name="Rating" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="Cover" Type="varchar" MaxLength="100" />
+          <Property Name="MangaTypeID" Type="int" />
+          <Property Name="TitleStatusID" Type="int" />
+          <Property Name="PublisherID" Type="int" />
+          <Property Name="AuthorID" Type="int" />
+          <Property Name="ArtistID" Type="int" />
+          <Property Name="AgeStatusID" Type="int" />
+        </EntityType>
+        <EntityType Name="MangaTitleGenres">
+          <Key>
+            <PropertyRef Name="MangaTitleGenresID" />
+          </Key>
+          <Property Name="MangaTitleGenresID" Type="int" Nullable="false" />
+          <Property Name="MangaTitleID" Type="int" />
+          <Property Name="GenresID" Type="int" />
+        </EntityType>
+        <EntityType Name="MangaType">
+          <Key>
+            <PropertyRef Name="MangaTypeID" />
+          </Key>
+          <Property Name="MangaTypeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="PagesID" />
+          </Key>
+          <Property Name="PagesID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="100" />
+          <Property Name="ChaptersID" Type="int" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="PublisherID" />
+          </Key>
+          <Property Name="PublisherID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TitleStatus">
+          <Key>
+            <PropertyRef Name="TitleStatusID" />
+          </Key>
+          <Property Name="TitleStatusID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Chapters_MangaTitle">
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="0..1" />
+          <End Role="Chapters" Type="Self.Chapters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MangaTitle">
+              <PropertyRef Name="MangaTitleID" />
+            </Principal>
+            <Dependent Role="Chapters">
+              <PropertyRef Name="MangaTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_AgeStatus">
+          <End Role="AgeStatus" Type="Self.AgeStatus" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeStatus">
+              <PropertyRef Name="AgeStatusID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="AgeStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_Artist">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_MangaType">
+          <End Role="MangaType" Type="Self.MangaType" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MangaType">
+              <PropertyRef Name="MangaTypeID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="MangaTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_Publisher">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="PublisherID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_TitleStatus">
+          <End Role="TitleStatus" Type="Self.TitleStatus" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TitleStatus">
+              <PropertyRef Name="TitleStatusID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="TitleStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitleGenres_Genres">
+          <End Role="Genres" Type="Self.Genres" Multiplicity="0..1" />
+          <End Role="MangaTitleGenres" Type="Self.MangaTitleGenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genres">
+              <PropertyRef Name="GenresID" />
+            </Principal>
+            <Dependent Role="MangaTitleGenres">
+              <PropertyRef Name="GenresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitleGenres_MangaTitle">
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="0..1" />
+          <End Role="MangaTitleGenres" Type="Self.MangaTitleGenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MangaTitle">
+              <PropertyRef Name="MangaTitleID" />
+            </Principal>
+            <Dependent Role="MangaTitleGenres">
+              <PropertyRef Name="MangaTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pages_Chapters">
+          <End Role="Chapters" Type="Self.Chapters" Multiplicity="0..1" />
+          <End Role="Pages" Type="Self.Pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chapters">
+              <PropertyRef Name="ChaptersID" />
+            </Principal>
+            <Dependent Role="Pages">
+              <PropertyRef Name="ChaptersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MangaOYomuDBModelStoreContainer">
+          <EntitySet Name="AgeStatus" EntityType="Self.AgeStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chapters" EntityType="Self.Chapters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genres" EntityType="Self.Genres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MangaTitle" EntityType="Self.MangaTitle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MangaTitleGenres" EntityType="Self.MangaTitleGenres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MangaType" EntityType="Self.MangaType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TitleStatus" EntityType="Self.TitleStatus" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Chapters_MangaTitle" Association="Self.FK_Chapters_MangaTitle">
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+            <End Role="Chapters" EntitySet="Chapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_AgeStatus" Association="Self.FK_MangaTitle_AgeStatus">
+            <End Role="AgeStatus" EntitySet="AgeStatus" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_Artist" Association="Self.FK_MangaTitle_Artist">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_Author" Association="Self.FK_MangaTitle_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_MangaType" Association="Self.FK_MangaTitle_MangaType">
+            <End Role="MangaType" EntitySet="MangaType" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_Publisher" Association="Self.FK_MangaTitle_Publisher">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_TitleStatus" Association="Self.FK_MangaTitle_TitleStatus">
+            <End Role="TitleStatus" EntitySet="TitleStatus" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitleGenres_Genres" Association="Self.FK_MangaTitleGenres_Genres">
+            <End Role="Genres" EntitySet="Genres" />
+            <End Role="MangaTitleGenres" EntitySet="MangaTitleGenres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitleGenres_MangaTitle" Association="Self.FK_MangaTitleGenres_MangaTitle">
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+            <End Role="MangaTitleGenres" EntitySet="MangaTitleGenres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pages_Chapters" Association="Self.FK_Pages_Chapters">
+            <End Role="Chapters" EntitySet="Chapters" />
+            <End Role="Pages" EntitySet="Pages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MangaOYomuDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgeStatus">
+          <Key>
+            <PropertyRef Name="AgeStatusID" />
+          </Key>
+          <Property Name="AgeStatusID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MangaTitle" Relationship="Self.FK_MangaTitle_AgeStatus" FromRole="AgeStatus" ToRole="MangaTitle" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MangaTitle" Relationship="Self.FK_MangaTitle_Artist" FromRole="Artist" ToRole="MangaTitle" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="AuthorID" />
+          </Key>
+          <Property Name="AuthorID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MangaTitle" Relationship="Self.FK_MangaTitle_Author" FromRole="Author" ToRole="MangaTitle" />
+        </EntityType>
+        <EntityType Name="Chapters">
+          <Key>
+            <PropertyRef Name="ChaptersID" />
+          </Key>
+          <Property Name="ChaptersID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MangaTitleID" Type="Int32" />
+          <NavigationProperty Name="MangaTitle" Relationship="Self.FK_Chapters_MangaTitle" FromRole="Chapters" ToRole="MangaTitle" />
+          <NavigationProperty Name="Pages" Relationship="Self.FK_Pages_Chapters" FromRole="Chapters" ToRole="Pages" />
+        </EntityType>
+        <EntityType Name="Genres">
+          <Key>
+            <PropertyRef Name="GenresID" />
+          </Key>
+          <Property Name="GenresID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MangaTitleGenres" Relationship="Self.FK_MangaTitleGenres_Genres" FromRole="Genres" ToRole="MangaTitleGenres" />
+        </EntityType>
+        <EntityType Name="MangaTitle">
+          <Key>
+            <PropertyRef Name="MangaTitleID" />
+          </Key>
+          <Property Name="MangaTitleID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+          <Property Name="ReleaseYear" Type="Int32" />
+          <Property Name="Rating" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Cover" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MangaTypeID" Type="Int32" />
+          <Property Name="TitleStatusID" Type="Int32" />
+          <Property Name="PublisherID" Type="Int32" />
+          <Property Name="AuthorID" Type="Int32" />
+          <Property Name="ArtistID" Type="Int32" />
+          <Property Name="AgeStatusID" Type="Int32" />
+          <NavigationProperty Name="AgeStatus" Relationship="Self.FK_MangaTitle_AgeStatus" FromRole="MangaTitle" ToRole="AgeStatus" />
+          <NavigationProperty Name="Artist" Relationship="Self.FK_MangaTitle_Artist" FromRole="MangaTitle" ToRole="Artist" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_MangaTitle_Author" FromRole="MangaTitle" ToRole="Author" />
+          <NavigationProperty Name="Chapters" Relationship="Self.FK_Chapters_MangaTitle" FromRole="MangaTitle" ToRole="Chapters" />
+          <NavigationProperty Name="MangaType" Relationship="Self.FK_MangaTitle_MangaType" FromRole="MangaTitle" ToRole="MangaType" />
+          <NavigationProperty Name="Publisher" Relationship="Self.FK_MangaTitle_Publisher" FromRole="MangaTitle" ToRole="Publisher" />
+          <NavigationProperty Name="TitleStatus" Relationship="Self.FK_MangaTitle_TitleStatus" FromRole="MangaTitle" ToRole="TitleStatus" />
+          <NavigationProperty Name="MangaTitleGenres" Relationship="Self.FK_MangaTitleGenres_MangaTitle" FromRole="MangaTitle" ToRole="MangaTitleGenres" />
+        </EntityType>
+        <EntityType Name="MangaTitleGenres">
+          <Key>
+            <PropertyRef Name="MangaTitleGenresID" />
+          </Key>
+          <Property Name="MangaTitleGenresID" Type="Int32" Nullable="false" />
+          <Property Name="MangaTitleID" Type="Int32" />
+          <Property Name="GenresID" Type="Int32" />
+          <NavigationProperty Name="Genres" Relationship="Self.FK_MangaTitleGenres_Genres" FromRole="MangaTitleGenres" ToRole="Genres" />
+          <NavigationProperty Name="MangaTitle" Relationship="Self.FK_MangaTitleGenres_MangaTitle" FromRole="MangaTitleGenres" ToRole="MangaTitle" />
+        </EntityType>
+        <EntityType Name="MangaType">
+          <Key>
+            <PropertyRef Name="MangaTypeID" />
+          </Key>
+          <Property Name="MangaTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MangaTitle" Relationship="Self.FK_MangaTitle_MangaType" FromRole="MangaType" ToRole="MangaTitle" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="PagesID" />
+          </Key>
+          <Property Name="PagesID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ChaptersID" Type="Int32" />
+          <NavigationProperty Name="Chapters" Relationship="Self.FK_Pages_Chapters" FromRole="Pages" ToRole="Chapters" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="PublisherID" />
+          </Key>
+          <Property Name="PublisherID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MangaTitle" Relationship="Self.FK_MangaTitle_Publisher" FromRole="Publisher" ToRole="MangaTitle" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TitleStatus">
+          <Key>
+            <PropertyRef Name="TitleStatusID" />
+          </Key>
+          <Property Name="TitleStatusID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MangaTitle" Relationship="Self.FK_MangaTitle_TitleStatus" FromRole="TitleStatus" ToRole="MangaTitle" />
+        </EntityType>
+        <Association Name="FK_MangaTitle_AgeStatus">
+          <End Role="AgeStatus" Type="Self.AgeStatus" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeStatus">
+              <PropertyRef Name="AgeStatusID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="AgeStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_Artist">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chapters_MangaTitle">
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="0..1" />
+          <End Role="Chapters" Type="Self.Chapters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MangaTitle">
+              <PropertyRef Name="MangaTitleID" />
+            </Principal>
+            <Dependent Role="Chapters">
+              <PropertyRef Name="MangaTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pages_Chapters">
+          <End Role="Chapters" Type="Self.Chapters" Multiplicity="0..1" />
+          <End Role="Pages" Type="Self.Pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chapters">
+              <PropertyRef Name="ChaptersID" />
+            </Principal>
+            <Dependent Role="Pages">
+              <PropertyRef Name="ChaptersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitleGenres_Genres">
+          <End Role="Genres" Type="Self.Genres" Multiplicity="0..1" />
+          <End Role="MangaTitleGenres" Type="Self.MangaTitleGenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genres">
+              <PropertyRef Name="GenresID" />
+            </Principal>
+            <Dependent Role="MangaTitleGenres">
+              <PropertyRef Name="GenresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_MangaType">
+          <End Role="MangaType" Type="Self.MangaType" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MangaType">
+              <PropertyRef Name="MangaTypeID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="MangaTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_Publisher">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="PublisherID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitle_TitleStatus">
+          <End Role="TitleStatus" Type="Self.TitleStatus" Multiplicity="0..1" />
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TitleStatus">
+              <PropertyRef Name="TitleStatusID" />
+            </Principal>
+            <Dependent Role="MangaTitle">
+              <PropertyRef Name="TitleStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MangaTitleGenres_MangaTitle">
+          <End Role="MangaTitle" Type="Self.MangaTitle" Multiplicity="0..1" />
+          <End Role="MangaTitleGenres" Type="Self.MangaTitleGenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MangaTitle">
+              <PropertyRef Name="MangaTitleID" />
+            </Principal>
+            <Dependent Role="MangaTitleGenres">
+              <PropertyRef Name="MangaTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MangaOYomuDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgeStatus" EntityType="Self.AgeStatus" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" />
+          <EntitySet Name="Author" EntityType="Self.Author" />
+          <EntitySet Name="Chapters" EntityType="Self.Chapters" />
+          <EntitySet Name="Genres" EntityType="Self.Genres" />
+          <EntitySet Name="MangaTitle" EntityType="Self.MangaTitle" />
+          <EntitySet Name="MangaTitleGenres" EntityType="Self.MangaTitleGenres" />
+          <EntitySet Name="MangaType" EntityType="Self.MangaType" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TitleStatus" EntityType="Self.TitleStatus" />
+          <AssociationSet Name="FK_MangaTitle_AgeStatus" Association="Self.FK_MangaTitle_AgeStatus">
+            <End Role="AgeStatus" EntitySet="AgeStatus" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_Artist" Association="Self.FK_MangaTitle_Artist">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_Author" Association="Self.FK_MangaTitle_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chapters_MangaTitle" Association="Self.FK_Chapters_MangaTitle">
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+            <End Role="Chapters" EntitySet="Chapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pages_Chapters" Association="Self.FK_Pages_Chapters">
+            <End Role="Chapters" EntitySet="Chapters" />
+            <End Role="Pages" EntitySet="Pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitleGenres_Genres" Association="Self.FK_MangaTitleGenres_Genres">
+            <End Role="Genres" EntitySet="Genres" />
+            <End Role="MangaTitleGenres" EntitySet="MangaTitleGenres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_MangaType" Association="Self.FK_MangaTitle_MangaType">
+            <End Role="MangaType" EntitySet="MangaType" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_Publisher" Association="Self.FK_MangaTitle_Publisher">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitle_TitleStatus" Association="Self.FK_MangaTitle_TitleStatus">
+            <End Role="TitleStatus" EntitySet="TitleStatus" />
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MangaTitleGenres_MangaTitle" Association="Self.FK_MangaTitleGenres_MangaTitle">
+            <End Role="MangaTitle" EntitySet="MangaTitle" />
+            <End Role="MangaTitleGenres" EntitySet="MangaTitleGenres" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MangaOYomuDBModelStoreContainer" CdmEntityContainer="MangaOYomuDBEntities">
+          <EntitySetMapping Name="AgeStatus">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.AgeStatus">
+              <MappingFragment StoreEntitySet="AgeStatus">
+                <ScalarProperty Name="AgeStatusID" ColumnName="AgeStatusID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artist">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.Artist">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Author">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chapters">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.Chapters">
+              <MappingFragment StoreEntitySet="Chapters">
+                <ScalarProperty Name="ChaptersID" ColumnName="ChaptersID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MangaTitleID" ColumnName="MangaTitleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.Genres">
+              <MappingFragment StoreEntitySet="Genres">
+                <ScalarProperty Name="GenresID" ColumnName="GenresID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MangaTitle">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.MangaTitle">
+              <MappingFragment StoreEntitySet="MangaTitle">
+                <ScalarProperty Name="MangaTitleID" ColumnName="MangaTitleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReleaseYear" ColumnName="ReleaseYear" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="MangaTypeID" ColumnName="MangaTypeID" />
+                <ScalarProperty Name="TitleStatusID" ColumnName="TitleStatusID" />
+                <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="AgeStatusID" ColumnName="AgeStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MangaTitleGenres">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.MangaTitleGenres">
+              <MappingFragment StoreEntitySet="MangaTitleGenres">
+                <ScalarProperty Name="MangaTitleGenresID" ColumnName="MangaTitleGenresID" />
+                <ScalarProperty Name="MangaTitleID" ColumnName="MangaTitleID" />
+                <ScalarProperty Name="GenresID" ColumnName="GenresID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MangaType">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.MangaType">
+              <MappingFragment StoreEntitySet="MangaType">
+                <ScalarProperty Name="MangaTypeID" ColumnName="MangaTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.Pages">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="PagesID" ColumnName="PagesID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ChaptersID" ColumnName="ChaptersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publisher">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.Publisher">
+              <MappingFragment StoreEntitySet="Publisher">
+                <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TitleStatus">
+            <EntityTypeMapping TypeName="MangaOYomuDBModel.TitleStatus">
+              <MappingFragment StoreEntitySet="TitleStatus">
+                <ScalarProperty Name="TitleStatusID" ColumnName="TitleStatusID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
